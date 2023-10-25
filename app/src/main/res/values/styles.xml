@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StarProgressBar">
+        <!-- Estilo do fundo da barra de progresso (estrelas vazias) -->
+        <item name="android:progressDrawable">@drawable/baseline_star_border_24</item>
+        <!-- Estilo do preenchimento da barra de progresso (estrelas preenchidas) -->
+        <item name="android:indeterminateDrawable">@drawable/baseline_star_rate_24</item>
+    </style>
+
+</resources>

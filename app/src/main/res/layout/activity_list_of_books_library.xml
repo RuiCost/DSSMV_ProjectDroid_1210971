@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/RelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <!-- View para criar a linha de divisão -->
+
+
+    <TextView
+            android:id="@+id/NOMBRE_LIVRO"
+            android:layout_width="346dp"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:textStyle="bold"
+            android:layout_marginTop="19dp" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:layout_marginStart="38dp" android:layout_marginBottom="1dp"/>
+    <TextView
+            android:id="@+id/address_LIVRO"
+            android:layout_width="208dp"
+            android:layout_height="36dp"
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:textStyle="italic"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="221dp" android:layout_alignParentStart="true" android:layout_marginStart="38dp"
+            android:layout_alignParentTop="true"/>
+    <TextView
+            android:id="@+id/openTime_LIVRO"
+            android:layout_width="208dp"
+            android:layout_height="36dp"
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:textStyle="italic"
+            android:layout_marginLeft="5dp"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginTop="90dp" android:layout_marginStart="42dp" android:layout_alignParentTop="true"
+    />
+    <TextView
+            android:id="@+id/closeTime_LIVRO"
+            android:layout_width="208dp"
+            android:layout_height="36dp"
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:textStyle="italic"
+            android:layout_marginLeft="5dp"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginTop="135dp" android:layout_alignParentTop="true"
+            android:layout_marginStart="38dp" android:layout_marginBottom="0dp"/>
+    <TextView
+            android:id="@+id/openDays_LIVRO"
+            android:layout_width="206dp"
+            android:layout_height="171dp"
+            android:textSize="14sp"
+            android:textColor="#808080"
+            android:textStyle="italic"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="174dp" android:layout_alignParentStart="true" android:layout_marginStart="40dp"
+            android:layout_alignParentTop="true"/>
+    <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A" android:layout_marginBottom="4dp"/>
+    <ListView
+            android:id="@+id/list_lib"
+            android:layout_width="401dp"
+            android:layout_height="381dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-77dp"/>
+    <EditText
+            android:id="@+id/LIB_BARRA_A"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:hint="Digite para pesquisar..."
+            android:padding="8dp"
+            android:layout_above="@id/list_lib"
+            android:drawableStart="@drawable/baseline_search_24" />
+
+</RelativeLayout>

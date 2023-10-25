@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:minHeight="50dp"
+                android:padding="8dp">
+
+
+    <ImageView
+            android:id="@+id/imageBelowTitle"
+            android:layout_width="403dp"
+            android:layout_height="391dp"
+            android:src="@drawable/shake_phone"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="98dp"
+            android:layout_alignParentTop="true"/>
+    <TextView
+            android:text="CHAKE"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/xTEXT"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="323dp" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:layout_marginStart="119dp"/>
+
+
+</RelativeLayout>
+

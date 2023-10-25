@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":ReviewsOfBookActivity" as Activity
+participant "planService:PlanService" as Service
+participant "HttpOperation" as HTTP
+activate User
+
+User -> Activity: info
+Activity -> Service: postReview(url, review, recommend)
+Service -> HTTP: post(urlStr, requestBody)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: readBody(in)
+HTTP --> Service :
+Service --> Activity
+Activity-->User: Toast message
+@enduml

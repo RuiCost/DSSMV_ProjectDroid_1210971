@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DSSMV_ProjectDroid</string>
+    <string name="search">Search</string>
+    <string-array name="numbers">
+        <item>ONE</item>
+        <item>TWO</item>
+    </string-array>
+
+</resources>

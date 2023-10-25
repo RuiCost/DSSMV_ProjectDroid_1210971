@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":SearchLibraryActivity" as Activity
+participant "HttpOperation" as HTTP
+
+activate User
+
+User -> Activity:they confirm to remove lib
+Activity -> HTTP: delete(url+selectedLibrary)
+HTTP -> HTTP:in = httpConn.getInputStream()
+HTTP --> HTTP: responseBody = readBody(in)
+HTTP --> Activity :
+Activity --> User: ok
+
+@enduml

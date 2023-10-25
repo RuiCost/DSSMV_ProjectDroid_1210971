@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F5F5F5">
+
+
+    <Button android:id="@+id/searchbook1"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="#FF5722"
+            android:text="Search  Book"
+            android:onClick="searchBook" tools:ignore="UsingOnClickInXml"/>
+    <Button android:id="@+id/searchLib"
+
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="#2196F3"
+            android:text="search  Library"
+            android:onClick="searchLib" tools:ignore="UsingOnClickInXml"/>
+    <Button android:id="@+id/likedBokks"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="#4CAF50"
+            android:text="Liked  BOOKS"
+            android:onClick="lik_book" tools:ignore="UsingOnClickInXml"/>
+    <Button android:id="@+id/randomBooook"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="#FFC107"
+            android:text="RANDOM BOOK"
+            android:onClick="randomBook" tools:ignore="UsingOnClickInXml"/>
+    <Button android:id="@+id/adddlibb"
+            android:layout_width="298dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="#FF4081"
+            android:text="ADD LIBRARY"
+            android:onClick="addLIB" tools:ignore="UsingOnClickInXml"/>
+</LinearLayout>

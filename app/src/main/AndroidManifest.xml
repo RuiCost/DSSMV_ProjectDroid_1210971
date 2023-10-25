@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.dssmv_projectdroid">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+            android:allowBackup="true"
+            android:usesCleartextTraffic="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:label="GRLibrary"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:targetApi="31">
+
+        <activity
+
+                android:name=".InfBookActivity"
+                android:exported="false"/>
+
+        <activity
+                android:name=".HomePageActivity"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".SearchBookActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".LikedBooksActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+
+        <activity
+                android:name=".ListOfBooksOfOneLibrary"
+                android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
+                android:name=".SearchLibraryActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".RandomBookByShakingItActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".ReviewsOfBookActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".AddLibraryActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".UserActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".AdminActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity
+                android:name=".AddBookActivity"
+                android:exported="true"
+                tools:ignore="Instantiatable">
+        </activity>
+        <activity android:name=".GetBookTitleActivity" android:exported="true">
+
+        </activity>
+    </application>
+
+</manifest>

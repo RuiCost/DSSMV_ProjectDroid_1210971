@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":InfBookActivity" as Activity
+participant "planService:PlanService" as Service
+participant "HttpOperation" as HTTP
+participant "JsonHandler" as JsonHandler
+participant "Mapper" as Mapper
+participant "MyDAtabaseHelper" as Database
+activate User
+
+User -> Activity: pressed button of like
+Activity -> Database: updateLikeStatus(valor,"1")
+Database --> Activity
+
+Activity -> Service: getBookL(url+isbn+url, url1+isbn+url1)
+Service -> HTTP: get(urlStr)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: body = readBody(in)
+HTTP --> Service : json
+Service -> HTTP: get(urlStr)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: body = readBody(in)
+HTTP --> Service : json1
+Service -> JsonHandler : JsonHandler._deSerializeJson2BookDTO(jsonString,jsonString1)
+JsonHandler --> Service: bookDTO
+Service -> Mapper: BookDTO2Book(bookDTODTO)
+Mapper --> Service :book
+Service --> Activity : book
+
+Activity -> Database : addBook(book.getName(), book.getIsbn(), "1")
+Database --> Activity
+Activity--> User:done
+
+@enduml

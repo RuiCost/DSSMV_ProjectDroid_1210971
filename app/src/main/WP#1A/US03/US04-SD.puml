@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":RandomBookByShakingItActivity" as Activity
+participant "RequestService" as Service
+participant "Vibrator" as Vibrator
+participant "HttpOperation" as HTTP
+participant "JsonHandler" as JsonHandler
+participant "Mapper" as Mapper
+participant "InfBookActivity" as InfBookActivity
+activate User
+
+User -> Activity:chakes the phone
+Activity -> Vibrator :vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE))
+Vibrator --> Activity :
+Activity -> Service :get_RANDOM_ISBN(url+randomPage+url + randomNum)
+Service -> HTTP: get(urlStr)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: body = readBody(in)
+HTTP --> Service : json
+Service -> JsonHandler : deSerializeJson2ISBN(jsonString)
+JsonHandler --> Service: ISBN
+Service --> Activity:ISBN
+Activity -> InfBookActivity: startActivity
+InfBookActivity--> Activity
+Activity--> User:sees random book
+@enduml

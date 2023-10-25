@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp"
+              android:background="@android:color/white"
+              android:elevation="2dp"
+              android:layout_margin="8dp">
+
+    <!-- Título do revisor -->
+    <TextView
+            android:id="@+id/NAME_REVIEWER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reviewer Name"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
+
+    <!-- Recomendado ou não -->
+    <TextView
+            android:id="@+id/TXT_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recommended"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="2dp"/>
+
+    <!-- Informações da revisão -->
+    <TextView
+            android:id="@+id/TXT_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Review Text Here"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp"/>
+
+    <!-- Data de criação -->
+    <TextView
+            android:id="@+id/TXT_createdDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data: 12-12-12"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="4dp"/>
+
+</LinearLayout>

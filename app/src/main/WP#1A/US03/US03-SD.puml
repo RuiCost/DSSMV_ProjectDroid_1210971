@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":LikedBooksActivity" as Activity
+participant "MyDAtabaseHelper" as DataBase
+participant "ListViewAdapterToLovedBooks" as Adapter
+activate User
+
+User -> Activity: enters activity
+Activity -> DataBase: getAllBookTitles()
+DataBase --> Activity : bookTitles
+Activity -> Adapter: setItems(bookTitles)
+Adapter --> Activity
+Activity -> Adapter: notifyDataSetChanged()
+Adapter --> Activity
+Activity --> User : shows list
+
+@enduml

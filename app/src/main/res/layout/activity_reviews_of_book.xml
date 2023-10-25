@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       android:id="@+id/swipeRefreshLayout"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+<LinearLayout
+        android:id="@+id/LinearLayout"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+            android:id="@+id/WRITE_REVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:hint="Digite para fazer review..."
+            android:padding="8dp"
+            android:layout_above="@id/list_lib"
+            android:drawableStart="@drawable/baseline_search_24"/>
+
+    <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Recommend"
+                    android:onClick="rd1"
+            />
+            <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Don't Recommend"
+                    android:checked="false"
+                    android:layout_marginStart="80dp"
+                    android:onClick="rd2"/>
+        </LinearLayout>
+
+
+
+    </RadioGroup>
+
+    <Button
+            android:id="@+id/MAKE_MY_REVIEW"
+            android:text="Post Review"
+            android:layout_width="282dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="18dp"
+            android:layout_marginEnd="26dp"
+            android:backgroundTint="#FF4081"
+            android:scaleType="fitEnd"
+            android:layout_alignParentStart="true" android:layout_marginStart="31dp"/>
+    <TextView
+            android:text="              REVIEWS"
+            android:id="@+id/NOMBRE_LIVRO"
+            android:layout_width="391dp"
+            android:layout_height="36dp"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:textStyle="bold"/>
+
+    <View
+            android:id="@+id/divider_line_one_REVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginBottom="4dp"/>
+
+    <ListView
+            android:id="@+id/list_commentery"
+            android:layout_width="match_parent"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_height="490dp"/>
+    <View
+            android:id="@+id/divider_line_two_REVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A"
+            android:layout_marginBottom="4dp"/>
+
+</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

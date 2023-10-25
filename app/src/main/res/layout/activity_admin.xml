@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:text="     Welcome Admin!"
+            android:layout_gravity="center"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/welcome"/>
+    <Button android:id="@+id/searchBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SearchBook"
+            android:onClick="searchBook" tools:ignore="UsingOnClickInXml"/>
+    <Button android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/addBook"
+            android:onClick="addBook"
+            android:text="Add Book" tools:ignore="UsingOnClickInXml">
+
+    </Button>
+
+
+</LinearLayout>

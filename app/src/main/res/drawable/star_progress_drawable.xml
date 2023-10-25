@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Stars filled drawable for progress -->
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/baseline_star_rate_24" />
+    </item>
+
+    <!-- Stars empty drawable for background -->
+    <item android:id="@android:id/background">
+        <bitmap android:src="@drawable/baseline_star_border_24" />
+    </item>
+</layer-list>

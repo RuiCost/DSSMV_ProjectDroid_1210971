@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":ReviewsOfBookActivity" as Activity
+participant "planService:PlanService" as Service
+participant "HttpOperation" as HTTP
+participant "JsonHandler" as JsonHandler
+participant "Mapper" as Mapper
+participant "ListViewAdapterReviewsOfBook" as Adapter
+activate User
+
+User -> Activity: enters
+Activity -> Service: getReviewsNOW(url+iSbN+url)
+Service -> HTTP: get(urlStr)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: body = readBody(in)
+HTTP --> Service : json
+Service -> JsonHandler : _deSerializeJson2REVIEWS(jsonString)
+JsonHandler --> Service: bookDTO
+Service -> Mapper: ReviewsDTO2Reviews(bookDTO)
+Mapper --> Service :book
+Service --> Activity : book
+Activity -> Adapter:setItems(librarybook.getBooks())
+Adapter--> Activity
+Activity -> Adapter:notifyDataSetChanged()
+Adapter--> Activity
+Activity --> User: shows reviews
+@enduml

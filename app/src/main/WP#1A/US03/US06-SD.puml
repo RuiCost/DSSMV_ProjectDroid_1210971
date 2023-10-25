@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":LikedBooksActivity" as Activity
+participant "MyDAtabaseHelper" as DataBase
+participant "ListViewAdapterBooks" as Adapter
+
+activate User
+
+User -> Activity: deletes a item
+Activity -> DataBase: getAllBookISBNS();
+DataBase --> Activity: bookISBNs
+Activity-> DataBase: deleteBookByISBN(bookISBNs.get(itemPosition))
+DataBase --> Activity:
+
+
+Activity ->DataBase: getAllBookTitles()
+DataBase --> Activity: bookTitles
+
+Activity -> Adapter: setItems(bookTitles)
+Adapter --> Activity
+Activity -> Adapter: notifyDataSetChanged()
+Adapter --> Activity
+
+Activity --> User: shows
+
+
+@enduml

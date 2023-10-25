@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":SearchBookActivity" as Activity
+participant "RequestService" as Service
+participant "HttpOperation" as HTTP
+participant "JsonHandler" as JsonHandler
+participant "Mapper" as Mapper
+participant "ListViewAdapterBooks" as Adapter
+activate User
+
+User -> Activity: query+press button
+Activity -> Service: getLibraryBook(url+query)
+Service -> HTTP: get(urlStr)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: body = readBody(in)
+HTTP --> Service : json
+Service -> JsonHandler : deSerializeJson2LibraryDTO(jsonString)
+JsonHandler --> Service: libraryDTO
+Service -> Mapper: BookDTO2Book(libraryDTO)
+Mapper --> Service :library
+Service --> Activity : library
+Activity -> Adapter:setItems(librarybook.getBooks())
+Adapter--> Activity
+Activity -> Adapter:notifyDataSetChanged()
+Adapter--> Activity
+Activity --> User: shows books
+@enduml

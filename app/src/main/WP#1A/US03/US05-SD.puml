@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":AddLibraryActivity" as Activity
+participant "planService:PlanService" as Service
+participant "HttpOperation" as HTTP
+activate User
+
+User -> Activity: types address,closeTime,name \n openDays,openDays
+Activity -> Service: addLIB_TO_API(urlStr, address,closeTime,name,openDays,openTime)
+Service -> HTTP: post(urlStr, requestBody)
+HTTP -> HTTP: in = httpConn.getInputStream()
+HTTP --> HTTP: readBody(in)
+HTTP --> Service :
+Service --> Activity
+Activity-->User: Toast message
+@enduml

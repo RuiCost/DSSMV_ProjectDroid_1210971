@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/LinearLayout"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText android:id="@+id/address_add_lib"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Address..."
+    />
+    <EditText android:id="@+id/name_add_lib"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" tools:layout_editor_absoluteY="123dp"
+              tools:layout_editor_absoluteX="0dp"
+              android:hint="Name..."/>
+
+    <EditText android:id="@+id/openDays_add_lib"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" tools:layout_editor_absoluteY="123dp"
+              tools:layout_editor_absoluteX="0dp"
+              android:hint="Open days..."/>
+
+    <TextView
+            android:text="Open Time"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/divider"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+    android:layout_gravity="center"/>
+
+    <TimePicker
+            android:id="@+id/openTime_add_lib"
+            android:layout_width="352dp"
+            android:layout_height="176dp"
+            android:timePickerMode="spinner"/>
+    <TextView
+            android:text="Close Time"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    <TimePicker
+            android:id="@+id/closeTime_add_lib"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"/>
+
+    <Button android:id="@+id/ADDLIBLIB"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="1000dp"
+            android:backgroundTint="#FF4081"
+            android:scaleType="fitEnd"
+            android:layout_alignParentStart="true" android:layout_marginStart="7dp"
+            android:text="Add Library"/>
+
+
+</LinearLayout>

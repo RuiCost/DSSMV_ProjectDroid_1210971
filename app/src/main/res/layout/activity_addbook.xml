@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/LinearLayout"
+              android:orientation="vertical"
+              android:padding="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText android:id="@+id/book2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="ISBN" android:minHeight="48dp" android:autofillHints="" android:inputType="number"/>
+
+    <EditText android:id="@+id/book4"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Stock" android:autofillHints="" android:minHeight="48dp"/>
+
+    <Button android:id="@+id/addBookbook"
+            android:layout_width="157dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add Book"/>
+
+
+    <EditText android:id="@+id/book"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    android:hint="Search book to add to library..."
+              android:drawableStart="@drawable/baseline_search_24"/>
+    <Button android:id="@+id/searchbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SearchBook"/>
+    <View
+            android:id="@+id/divider_line1"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A" android:layout_marginBottom="4dp"/>
+    <ListView
+            android:id="@+id/list_book"
+            android:layout_width="match_parent"
+            android:layout_height="198dp"/>
+    <!-- ListView to show selected books and their stocks -->
+    <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A" android:layout_marginBottom="4dp"/>
+    <TextView
+            android:text="List to Add"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/background_dark"
+            android:layout_above="@id/LIB_BARRA_A" android:layout_marginBottom="4dp"/>
+    <ListView
+            android:id="@+id/list_selected_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+
+
+</LinearLayout>
