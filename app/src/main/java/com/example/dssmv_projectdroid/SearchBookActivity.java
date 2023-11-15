@@ -33,6 +33,7 @@ public class SearchBookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_searchbook);
 
         searchbook=(Button) findViewById(R.id.searchbook);
+
         bookname =(EditText) findViewById(R.id.book);
 
         book_list=(ListView) findViewById(R.id.list_book);
@@ -42,7 +43,7 @@ public class SearchBookActivity extends AppCompatActivity {
         adapter=new ListViewAdapterBooks(getApplicationContext(),R.layout.list_item,librarybook.getBooks());
         book_list.setAdapter(adapter);
 
-
+        //clicar num item da  lista
         book_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,14 +67,15 @@ public class SearchBookActivity extends AppCompatActivity {
             }
         });
 
-    }private void getLibraryBook(String urlStr){
+    }
+
+    private void getLibraryBook(String urlStr){
 
         new Thread(){
             public void run(){
                 try {
 
                     librarybook = RequestService.getLibraryBook(urlStr);
-                    Book book=librarybook.getBooks().get(0);
 
 
                     runOnUiThread(new Runnable() {

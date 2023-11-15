@@ -32,13 +32,12 @@ public class RequestService {
         }
         return library;
     }
-    private static BookDTO _getBookL (String urlStr,String urlStr1){
+    private static BookDTO _getBookL (String urlStr){
         BookDTO bookDTO=null;
         try{
 
             String jsonString = HttpOperation.get(urlStr);
-            String jsonString1=HttpOperation.get(urlStr1);
-            bookDTO = JsonHandler._deSerializeJson2BookDTO(jsonString,jsonString1);
+            bookDTO = JsonHandler._deSerializeJson2BookDTO(jsonString);
 
             if(bookDTO !=null) {
                 getBitmapIcons(bookDTO);
@@ -55,8 +54,8 @@ public class RequestService {
         Library library= Mapper.libraryDTO2livrary(libraryDTO);
         return library;
     }
-    public static Book getBookL(String urlStr,String urlStr1) {
-        BookDTO bookDTODTO = _getBookL(urlStr,urlStr1);
+    public static Book getBookL(String urlStr) {
+        BookDTO bookDTODTO = _getBookL(urlStr);
         Book book= Mapper.BookDTO2Book(bookDTODTO);
         return book;
     }
@@ -102,7 +101,7 @@ public class RequestService {
                     "  \"recommended\": \"" +recommended+"\",\n" +
                     "  \"review\": \"" + review + "\"\n" +
                     "}");
-        
+
     }
     public static String getID(String url){
         String ID=new String();

@@ -151,8 +151,6 @@ public class SearchLibraryActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    //HttpOperation.delete("http://193.136.62.24/v1/library/"+"14e3c1ab-857b-4f3d-856e-fa4bd489d5af");
-
                     List<Library> allLibraries = getLibraryBook();
                     runOnUiThread(new Runnable() {
                         @Override

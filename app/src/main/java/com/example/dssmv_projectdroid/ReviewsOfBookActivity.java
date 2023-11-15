@@ -4,11 +4,13 @@ import adapter.ListViewAdapterBooks;
 import adapter.ListViewAdapterInfoBook;
 import adapter.ListViewAdapterReviewsOfBook;
 import adapter.MyDAtabaseHelper;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import model.Book;
 import model.Library;
 import service.RequestService;
@@ -25,8 +27,9 @@ public class ReviewsOfBookActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton1;
     RadioButton radioButton2;
+    SwipeRefreshLayout swipeRefreshLayout;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,17 @@ public class ReviewsOfBookActivity extends AppCompatActivity {
         String ID_LIB = getIntent().getStringExtra("ID_LIBRARY");
         getReviews(iSbN);
 
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Coloque aqui o código para recarregar os comentários
+                getReviews(iSbN);
+
+                // Finalize o "refresh" após a atualização
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
 
         bt.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +80,9 @@ public class ReviewsOfBookActivity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),
                             "Review done, please refresh the page", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),
+                            "No review, no post...", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -85,11 +102,10 @@ public class ReviewsOfBookActivity extends AppCompatActivity {
         new Thread() {
             public void run() {
                 try {
-                    final Book newBook = RequestService.getReviewsNOW("http://193.136.62.24/v1/book/" + iSbN + "/review?limit=10");
+                    book = RequestService.getReviewsNOW("http://193.136.62.24/v1/book/" + iSbN + "/review?limit=10");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            book = newBook; // Atualize o objeto book com as novas avaliações
                             adapter = new ListViewAdapterReviewsOfBook(getApplicationContext(), R.layout.list_of_revies, book.getReviewers());
                             review_list.setAdapter(adapter); // Defina o novo adaptador com as novas avaliações
                             adapter.notifyDataSetChanged();
@@ -106,7 +122,7 @@ public class ReviewsOfBookActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                        RequestService.postReview(url, review, recommend);
+                    RequestService.postReview(url, review, recommend);
 
                     runOnUiThread(new Runnable() {
                         @Override

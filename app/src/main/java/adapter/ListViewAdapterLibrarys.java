@@ -50,11 +50,9 @@ public class ListViewAdapterLibrarys extends BaseAdapter{
 
     public View getView(int position, View convertView, ViewGroup parent) {
         Library library = (Library) getItem(position);
+         LayoutInflater inflater = LayoutInflater.from(context);
+         convertView = inflater.inflate(layout_id1, parent, false);
 
-        if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(layout_id1, parent, false);
-        }
 
         TextView textName = convertView.findViewById(R.id.NAMELIB);
         TextView textOpenTime = convertView.findViewById(R.id.OPEN_TIME);

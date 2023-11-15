@@ -75,4 +75,5 @@ public class ListViewAdapterReviewsOfBook extends BaseAdapter {
 
         return convertView;
     }
+
 }

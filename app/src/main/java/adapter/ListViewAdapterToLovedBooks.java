@@ -35,7 +35,7 @@ public class ListViewAdapterToLovedBooks extends BaseAdapter {
     @Nullable
     @Override
     public String getItem(int position) {
-        return getItem(position); // Assuming the list is a List<String>
+        return getItem(position);
     }
     @Override
     public long getItemId(int i) {
@@ -44,10 +44,8 @@ public class ListViewAdapterToLovedBooks extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(layout_id1, parent, false);
-        }
+        LayoutInflater inflater = LayoutInflater.from(context);
+        convertView = inflater.inflate(layout_id1, parent, false);
 
         TextView textName1 = convertView.findViewById(R.id.NAMEBOOK);
 

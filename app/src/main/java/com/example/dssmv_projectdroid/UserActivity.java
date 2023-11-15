@@ -8,28 +8,12 @@ import android.os.Bundle;
 
 public class UserActivity extends AppCompatActivity {
     private static final String TAG="MainActivity:";
-    private Button searchbook;
-
-    private Button searchLib;
-
-    private Button randomBOOK;
-
-    private Button AddLib;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
-                                //layout inflado
-        searchbook=findViewById(R.id.searchbook1);
-
-        searchLib=findViewById(R.id.searchLib);
-
-        randomBOOK=findViewById(R.id.randomBooook);
-
-        AddLib=findViewById(R.id.adddlibb);
 
     }
 

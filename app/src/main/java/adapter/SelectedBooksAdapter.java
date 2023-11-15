@@ -22,13 +22,13 @@ public class SelectedBooksAdapter extends ArrayAdapter<Book> {
         this.selectedBooks = selectedBooks;
     }
 
+
+
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_selected, parent, false);
-        }
-
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_selected, parent, false);
         // Get the book at the specified position
         Book book = selectedBooks.get(position);
 

@@ -57,6 +57,8 @@ public class AddLibraryActivity extends AppCompatActivity {
                 if (address.length() > 0 && closeTime.length() > 0 && name.length() > 0 && openDays.length() > 0 && openTime.length() > 0) {
                     addA_NICE_Library("http://193.136.62.24/v1/library", address, closeTime, name, openDays, openTime);
                     Toast.makeText(AddLibraryActivity.this, "Library Added", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(AddLibraryActivity.this, "Missing some Info", Toast.LENGTH_SHORT).show();
                 }
 
             }

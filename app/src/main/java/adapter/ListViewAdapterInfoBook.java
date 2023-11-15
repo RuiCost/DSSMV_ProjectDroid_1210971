@@ -45,29 +45,27 @@ public class ListViewAdapterInfoBook extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(layout_id1, parent, false);
-        }
+        LayoutInflater inflater = LayoutInflater.from(context);
+        convertView = inflater.inflate(layout_id1, parent, false);
 
-        // Posição do primeiro item na linha
+
+        // Posicao dos titulos kkkkkk
         int firstItemPosition = position * 2;
 
-        // Posição do segundo item na linha
+        // Posição da info para esse titulo
         int secondItemPosition = firstItemPosition + 1;
 
         TextView textName1 = convertView.findViewById(R.id.NAME_OF_INFO);
         TextView textOpenTime1 = convertView.findViewById(R.id.INFO_IT_SELF);
 
-        // Obtém os dois itens da lista para exibição
+
         String firstItem = items.get(firstItemPosition);
         String secondItem = items.get(secondItemPosition);
 
-        // Define os textos nos elementos de layout
         textName1.setText(firstItem);
         textOpenTime1.setText(secondItem);
 
-        // Alterne as cores de fundo para cada linha da lista
+        //MUDAR A COR POR LINHA
         int backgroundColor = position % 2 == 0 ? R.color.even_item_background : R.color.odd_item_background;
         convertView.setBackgroundResource(backgroundColor);
 

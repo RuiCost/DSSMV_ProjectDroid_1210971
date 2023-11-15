@@ -46,23 +46,21 @@ public class LikedBooksActivity extends AppCompatActivity {
 
         List<String> bookTitles = myDB.getAllBookTitles();
 
-        getBooksFromMyDB(bookTitles);
-
-        list = findViewById(R.id.list_book);
+        showBooksFromMyDB(bookTitles);
 
         registerForContextMenu(list); // Move this line here
+
+
+
+
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Chamado quando o usuário desliza para cima para atualizar
-                // Coloque aqui a lógica de atualização dos dados, caso necessário
 
-                // Por exemplo, você pode recarregar os livros da sua base de dados aqui
                 List<String> bookTitles = myDB.getAllBookTitles();
-                getBooksFromMyDB(bookTitles);
-
+                showBooksFromMyDB(bookTitles);
                 // Ao finalizar a atualização, chame setRefreshing(false) para indicar que a ação de atualização terminou.
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -81,7 +79,7 @@ public class LikedBooksActivity extends AppCompatActivity {
 
     }
 
-
+    // PRESSIONAR POR UM TEMPO
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -95,12 +93,9 @@ public class LikedBooksActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.delete:
-                List<String> bookISBNs = myDB.getAllBookISBNS();
+                List<String> bookISBNs = myDB.getAllBookISBNS(); // TODOS OS ISBNS POR ORDEM DA LISTA
                 String bookISBNToDelete = bookISBNs.get(itemPosition); // Obtem o isbn do livro selecionado
                 deleteBookFromDB(bookISBNToDelete); // Remove o livro da base de dados
-                adapter.notifyDataSetChanged(); // Atualiza a ListView
-                myDB.updateLikeStatus(bookISBNToDelete,"0");
-                Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.edit:
                 Toast.makeText(this, "Edits", Toast.LENGTH_SHORT).show();
@@ -111,31 +106,14 @@ public class LikedBooksActivity extends AppCompatActivity {
     }
     private void deleteBookFromDB(String bookISBN) {
         myDB.deleteBookByISBN(bookISBN);
-
         List<String> bookTitles = myDB.getAllBookTitles();
         adapter.setItems(bookTitles);
         adapter.notifyDataSetChanged();
     }
 
-    private void getBooksFromMyDB(List<String> bookTitles) {
-        new Thread() {
-            public void run() {
-                try {
-
-                    runOnUiThread(new Runnable() {
-                        @SuppressLint("SetTextI18n")
-                        @Override
-                        public void run() {
-
-                            adapter.setItems(bookTitles);
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+    private void showBooksFromMyDB(List<String> bookTitles) {
+        adapter.setItems(bookTitles);
+        adapter.notifyDataSetChanged();
     }
 
 

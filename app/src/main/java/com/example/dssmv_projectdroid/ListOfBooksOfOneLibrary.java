@@ -1,6 +1,7 @@
 package com.example.dssmv_projectdroid;
 
-import adapter.ListViewAdapterBooksOfLibrary;
+import adapter.ListViewAdapterBooks;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListOfBooksOfOneLibrary extends AppCompatActivity {
-
+    Library librarybook=null;
     EditText barforbooks;
     ListView book_list;
-    ListViewAdapterBooksOfLibrary adapter;
+    ListViewAdapterBooks adapter;
     List<Book> books = new ArrayList<>();
 
     TextView textView_name;
@@ -54,11 +55,14 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
 
         textView_openDays = findViewById(R.id.openDays_LIVRO);
 
-        adapter = new ListViewAdapterBooksOfLibrary(this, R.layout.list_item, books);
+        librarybook=new Library();
+        // criar um adaptador para a List View, adapter é um intermediario entre os dados e a List View
+        adapter=new ListViewAdapterBooks(getApplicationContext(),R.layout.list_item,librarybook.getBooks());
         book_list.setAdapter(adapter);
 
         // Carregar os livros da biblioteca selecionada
         loadBooksFromOneLibrary(ID_OF_LIB);
+
         MoreInfoOboutThisLibrary(ID_OF_LIB);
         // Listener para a barra de busca de livros
         barforbooks.addTextChangedListener(new TextWatcher() {
@@ -78,7 +82,6 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
                     loadBooksFromOneLibrary(ID_OF_LIB);
                 } else {
                     // Realiza a busca por nome de livro
-
                     searchBookByName(searchText);
                 }
             }
@@ -89,9 +92,8 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =  new Intent(ListOfBooksOfOneLibrary.this, InfBookActivity.class);
-                Book b = books.get(i);
+                Book b = librarybook.getBooks().get(i);
                 intent.putExtra("ISBN", b.getIsbn());
-                intent.putExtra("ID_LIBRARY", ID_OF_LIB);
                 startActivity(intent);
             }
         });
@@ -104,16 +106,13 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Library loadedBooks_L = RequestService.getBooksFromONELibrary(Utils.FIND_BOOKS_FROM_ONE_LIBRARY_0 + ID_OF_LIB + Utils.FIND_BOOKS_FROM_ONE_LIBRARY_1 + 70);
-                    Library Lib_with_inf = RequestService.getLibraryInfo("http://193.136.62.24/v1/library/"+ID_OF_LIB);
+                    librarybook = RequestService.getBooksFromONELibrary(Utils.FIND_BOOKS_FROM_ONE_LIBRARY_0 + ID_OF_LIB + Utils.FIND_BOOKS_FROM_ONE_LIBRARY_1 + 70);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            books.clear();
-                            if (loadedBooks_L.getBooks() != null) {
-                                books.addAll(loadedBooks_L.getBooks());
-                            }
+                            adapter.setItems(librarybook.getBooks());
                             adapter.notifyDataSetChanged();
+
                         }
                     });
                 } catch (Exception e) {
@@ -128,20 +127,17 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
             public void run() {
                 try {
                     final List<Book> searchResults = new ArrayList<>();
-
-                    // Iterar sobre a lista original de livros e adicionar os correspondentes ao termo de pesquisa na lista de resultados
-                    for (Book book : books) {
+                    // Iterar sobre a lista original de livros
+                    for (Book book : librarybook.getBooks()) {
                         if (book.getName().toLowerCase().contains(searchText.toLowerCase())) {
                             searchResults.add(book);
                         }
                     }
-
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             books.clear();
-                            books.addAll(searchResults);
+                            adapter.setItems(searchResults);
                             adapter.notifyDataSetChanged();
                         }
                     });
@@ -151,6 +147,7 @@ public class ListOfBooksOfOneLibrary extends AppCompatActivity {
             }
         }).start();
     }
+
     private void MoreInfoOboutThisLibrary(final String libraryID) {
         new Thread(new Runnable() {
             @Override

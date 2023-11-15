@@ -78,11 +78,8 @@ public class RandomBookByShakingItActivity  extends AppCompatActivity implements
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        /*
-        xTextView.setText(sensorEvent.values[0]+"m/s2");
-        yTextView.setText(sensorEvent.values[1]+"m/s2");
-        zTextView.setText(sensorEvent.values[2]+"m/s2");
-        */
+
+
         currentX = sensorEvent.values[0];
         currentY = sensorEvent.values[1];
         currentZ = sensorEvent.values[2];

@@ -35,7 +35,7 @@ public class JsonHandler {
 
     }
 
-    public static BookDTO _deSerializeJson2BookDTO(String resp, String resp1) {
+    public static BookDTO _deSerializeJson2BookDTO(String resp) {
         BookDTO bookDTO = new BookDTO();
         try {
 

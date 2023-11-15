@@ -44,6 +44,7 @@ public class ListViewAdapterBooks extends BaseAdapter{
 
     public View getView(int position, View convertView, ViewGroup parent){
         String name = ((Book)getItem(position)).getName();
+        //usado para inflar o layout de um item de lista a partir de um arquivo XML
         LayoutInflater inflater =LayoutInflater.from(this.context);
         convertView = inflater.inflate(this.layout_id,parent,false);
 

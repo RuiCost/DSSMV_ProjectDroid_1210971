@@ -22,8 +22,4 @@ public class HomePageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void seeAdmin(View view) {
-        Intent intent=new Intent(HomePageActivity.this,AdminActivity.class);
-        startActivity(intent);
-    }
 }
